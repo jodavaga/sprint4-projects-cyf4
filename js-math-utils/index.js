@@ -15,3 +15,11 @@ export const displayNumberByConsole = (number) => {
   console.log(`Su numero ingresado es: ${number}`);
   return number;
 };
+
+export const getNumMayor = (num1, num2) => {
+  if (num1 > num2) {
+    return num1;
+  } else {
+    return num2;
+  }
+};
