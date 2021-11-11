@@ -15,3 +15,11 @@ export const displayNumberByConsole = (number) => {
   console.log(`Su numero ingresado es: ${number}`);
   return number;
 };
+
+export const higherNumber = (arrayNumbers) => {
+  const higherNum = arrayNumbers.reduce((acc, actual) => {
+    return acc > actual ? acc : actual;
+  }, null);
+
+  console.log(higherNum);
+};
