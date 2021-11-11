@@ -29,3 +29,5 @@ export const getHigherNumberFromArray = (arrayNumbers) => {
     return acc > valorActual ? acc : valorActual;
   }, null);
 };
+
+export const getNumMin = (num1, num2) => num1 > num2 ? num2 : num1;
