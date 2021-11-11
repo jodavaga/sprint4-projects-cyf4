@@ -23,3 +23,9 @@ export const getNumMayor = (num1, num2) => {
     return num2;
   }
 };
+
+export const getHigherNumberFromArray = (arrayNumbers) => {
+  return arrayNumbers.reduce((acc, valorActual) => {
+    return acc > valorActual ? acc : valorActual;
+  }, null);
+};
