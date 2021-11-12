@@ -16,10 +16,24 @@ export const displayNumberByConsole = (number) => {
   return number;
 };
 
-export const higherNumber = (arrayNumbers) => {
-  const higherNum = arrayNumbers.reduce((acc, actual) => {
-    return acc > actual ? acc : actual;
-  }, null);
+export const getNumMayor = (num1, num2) => {
+  if (num1 > num2) {
+    return num1;
+  } else {
+    return num2;
+  }
+};
 
-  console.log(higherNum);
+export const getHigherNumberFromArray = (arrayNumbers) => {
+  return arrayNumbers.reduce((acc, valorActual) => {
+    return acc > valorActual ? acc : valorActual;
+  }, null);
+};
+
+export const getNumMenor = (num1, num2) => {
+  if (num1 < num2) {
+    return num1;
+  } else {
+    return num2;
+  }
 };
