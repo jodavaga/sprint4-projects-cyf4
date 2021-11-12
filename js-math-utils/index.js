@@ -31,3 +31,4 @@ export const getHigherNumberFromArray = (arrayNumbers) => {
 };
 
 export const getNumMin = (num1, num2) => num1 > num2 ? num2 : num1;
+
