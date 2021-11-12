@@ -10,7 +10,7 @@ export const resta = (num1, num2) => {
 
 export const displayNumberByConsole = (number) => {
   if (!number) return;
-  if (typeof number !== "number") return "Recuerda debes ingresar un numero";
+  if (typeof number !== 'number') return 'Recuerda debes ingresar un numero';
 
   console.log(`Su numero ingresado es: ${number}`);
   return number;
@@ -30,5 +30,12 @@ export const getHigherNumberFromArray = (arrayNumbers) => {
   }, null);
 };
 
-export const getNumMin = (num1, num2) => num1 > num2 ? num2 : num1;
+export const getNumMin = (num1, num2) => (num1 > num2 ? num2 : num1);
 
+export const getNumMenor = (num1, num2) => {
+  if (num1 < num2) {
+    return num1;
+  } else {
+    return num2;
+  }
+};
