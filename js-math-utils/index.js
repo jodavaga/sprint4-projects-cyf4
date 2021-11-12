@@ -29,3 +29,22 @@ export const getHigherNumberFromArray = (arrayNumbers) => {
     return acc > valorActual ? acc : valorActual;
   }, null);
 };
+
+
+export const menor = numeros.reduce(function(menor, numero) {
+  if(menor > numero) {
+     menor = numero;
+  }
+  return menor;
+}, numeros[0]);
+
+// agregó el git add y git commit
+
+export const potencia = ((valor,potencia) => {
+  return math.pow(valor,potencia);
+});
+
+potencia(2,2);
+
+
+
