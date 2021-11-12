@@ -37,3 +37,5 @@ export const getNumMenor = (num1, num2) => {
     return num2;
   }
 };
+
+export const getPotencia = (num, potencia) => Math.pow(num, potencia);
