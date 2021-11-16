@@ -44,7 +44,12 @@ export const potencia = ((valor,potencia) => {
   return math.pow(valor,potencia);
 });
 
-potencia(2,2);
+potencia(2,3);
+
+// 
+export const raiz = (numero) => { 
+  return math.sqrt(numero);
+}
 
 
 
