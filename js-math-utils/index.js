@@ -38,4 +38,12 @@ export const getNumMenor = (num1, num2) => {
   }
 };
 
+<<<<<<< HEAD
 export const getPotencia = (num, potencia) => Math.pow(num, potencia);
+=======
+// Noviembre 16 - Clase 57: Branches
+
+export function raizCuadrada(number) {
+  return Math.sqrt(number);
+}
+>>>>>>> c464889 (feat: create new sqrt function)
