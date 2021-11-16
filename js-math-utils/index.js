@@ -38,3 +38,8 @@ export const getNumMenor = (num1, num2) => {
   }
 };
 
+// Noviembre 16 - Clase 57: Branches
+
+export function raizCuadrada(number) {
+  return Math.sqrt(number);
+}
