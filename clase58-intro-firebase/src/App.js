@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Clase 58 - Introduccion a Firebase</p>
-        <span className="App-link">Add New User to Firestore</span>
+        <span className="App-link">Into Firestore</span>
       </header>
     </div>
   );
