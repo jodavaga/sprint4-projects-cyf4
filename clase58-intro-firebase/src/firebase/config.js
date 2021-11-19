@@ -18,6 +18,7 @@ const appFirebase = initializeApp(firebaseConfig);
 export const database = getFirestore();
 
 // referencia a la coleccion
-export const collectionRef = collection(database, "usuarios");
+export const usersCollectionRef = collection(database, "usuarios");
+export const tweetsCollectionRef = collection(database, "tweets");
 
 export default appFirebase;
