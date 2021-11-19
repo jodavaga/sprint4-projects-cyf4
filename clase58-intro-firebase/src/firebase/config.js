@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 // More fucntionalities
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDFIGFgU3dV5fBdTXGML9dPHIliLefVZAU",
@@ -21,4 +21,18 @@ export const database = getFirestore();
 export const usersCollectionRef = collection(database, "usuarios");
 export const tweetsCollectionRef = collection(database, "tweets");
 
+// Functions
+async function getFireStore() {
+  const firetoreRef = await getFirestore(appFirebase);
+  console.log(firetoreRef.type);
+}
+
+async function getDocuments(refCollection) {
+  const querySnapshot = await getDocs(refCollection);
+  querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+  });
+}
+
+export { getFireStore, getDocuments };
 export default appFirebase;
