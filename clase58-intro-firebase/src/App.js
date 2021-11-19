@@ -1,23 +1,13 @@
 import React, { useEffect } from "react";
 // database firestore
-import firebaseApp, { database } from "./firebase/config";
-import {
-  doc,
-  collection,
-  addDoc,
-  getFirestore,
-  getDoc,
-  getDocs,
-} from "firebase/firestore";
+import firebaseApp, { collectionRef } from "./firebase/config";
+import { addDoc, getFirestore, getDocs } from "firebase/firestore";
 
 import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
   const createNewUser = () => {
-    // referencia a la coleccion
-    const collectionRef = collection(database, "usuarios");
-
     const newObj = {
       name: "Damaris",
       username: "damaris",
@@ -39,13 +29,14 @@ function App() {
   };
 
   const getDocuments = async () => {
-    const querySnapshot = await getDocs(collection(database, "usuarios"));
+    const querySnapshot = await getDocs(collectionRef);
     querySnapshot.forEach((doc) => {
       console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
     });
   };
 
   useEffect(() => {
+    // Obtenemos los snapshots de documentos
     getDocuments();
   }, []);
 

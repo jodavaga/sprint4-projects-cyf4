@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 // More fucntionalities
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDFIGFgU3dV5fBdTXGML9dPHIliLefVZAU",
@@ -16,5 +16,8 @@ const firebaseConfig = {
 const appFirebase = initializeApp(firebaseConfig);
 
 export const database = getFirestore();
+
+// referencia a la coleccion
+export const collectionRef = collection(database, "usuarios");
 
 export default appFirebase;
