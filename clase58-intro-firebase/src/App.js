@@ -1,7 +1,14 @@
 import React, { useEffect } from "react";
 // database firestore
-import { database } from "./firebase/config";
-import { collection, addDoc } from "firebase/firestore";
+import firebaseApp, { database } from "./firebase/config";
+import {
+  doc,
+  collection,
+  addDoc,
+  getFirestore,
+  getDoc,
+  getDocs,
+} from "firebase/firestore";
 
 import logo from "./logo.svg";
 import "./App.css";
@@ -25,6 +32,22 @@ function App() {
       })
       .catch((e) => console.log("Error:", e));
   };
+
+  const getFireStore = async () => {
+    const firetoreRef = await getFirestore(firebaseApp);
+    console.log(firetoreRef.type);
+  };
+
+  const getDocuments = async () => {
+    const querySnapshot = await getDocs(collection(database, "usuarios"));
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+    });
+  };
+
+  useEffect(() => {
+    getDocuments();
+  }, []);
 
   return (
     <div className="App">
