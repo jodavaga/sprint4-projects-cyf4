@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+// components
+import TweetForm from "./components/molecules/TweetForm/TweetForm";
+import ListaTweets from "./components/organisms/ListaTweets";
+
+// styles
+import "./App.css";
+
+const initialFormState = {
+  tweet: "",
+  author: "",
+};
 
 function App() {
+  const [formState, setFormState] = useState(initialFormState);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Clase 59 - Recap firebase</h1>
+
+      <TweetForm
+        formState={formState}
+        setFormState={setFormState}
+        initialState={initialFormState}
+      />
+
+      <hr />
+
+      <ListaTweets />
     </div>
   );
 }
