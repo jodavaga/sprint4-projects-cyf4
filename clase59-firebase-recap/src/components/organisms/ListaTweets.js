@@ -1,11 +1,20 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { TweetListContext } from "../../contexts/TweetListContext";
+import useTweets from "../../hooks/useTweets";
 import Tweet from "../molecules/Tweet/Tweet";
 
 import "./styles.css";
 
 const ListaTweets = () => {
   const { listaTweets } = useContext(TweetListContext);
+
+  const { getTweets } = useTweets();
+
+  useEffect(() => {
+    const getAsyncTweets = async () => await getTweets();
+
+    getAsyncTweets();
+  }, []);
 
   return (
     <div className="listWrapper">
