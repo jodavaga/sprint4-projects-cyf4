@@ -1,6 +1,8 @@
 import React from "react";
 import useTweets from "../../../hooks/useTweets";
 
+import "./styles.css";
+
 const Tweet = ({ text, author, date, id }) => {
   const { deleteTweet } = useTweets();
 
@@ -9,11 +11,14 @@ const Tweet = ({ text, author, date, id }) => {
   };
 
   return (
-    <div>
-      <h3>{text}</h3>
-      <b>Author: {author}</b>
-      <code>{date}</code>
-      <button onClick={() => handleDelete(id)}>borrar</button>
+    <div className="tweetWrapper">
+      <h2>{text}</h2>
+      <div>
+        <span>
+          <b>Author:</b> {author}
+        </span>
+        <button onClick={() => handleDelete(id)}>borrar</button>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,18 @@
+.tweetWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  border: 1px solid gray;
+  margin: 10px;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  margin: 0 auto 10px;
+}
+
+span {
+  margin-right: 10px;
+}
