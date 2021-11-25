@@ -15,13 +15,13 @@ const TweetForm = ({ formState, setFormState, initialState }) => {
     setFormState(formValueTemp);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     // enviar a firebase
-    await addTweet(formState);
+    addTweet(formState);
 
-    // reset fields
+    // reset form fields
     setFormState(initialState);
   };
 
@@ -31,6 +31,7 @@ const TweetForm = ({ formState, setFormState, initialState }) => {
         <textarea
           placeholder="escribe tu tweet"
           name="tweet"
+          autoComplete="off"
           onChange={handleChange}
           value={formState.tweet}
         />
@@ -39,6 +40,7 @@ const TweetForm = ({ formState, setFormState, initialState }) => {
           <input
             placeholder="Author"
             name="author"
+            autoComplete="off"
             value={formState.author}
             onChange={handleChange}
           />

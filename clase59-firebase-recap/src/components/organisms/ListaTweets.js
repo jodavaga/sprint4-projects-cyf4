@@ -1,16 +1,9 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { TweetListContext } from "../../contexts/TweetListContext";
-import useTweets from "../../hooks/useTweets";
 import Tweet from "../molecules/Tweet/Tweet";
 
 const ListaTweets = () => {
   const { listaTweets } = useContext(TweetListContext);
-
-  const { getTweets } = useTweets();
-
-  useEffect(() => {
-    getTweets();
-  }, []);
 
   return (
     <div>

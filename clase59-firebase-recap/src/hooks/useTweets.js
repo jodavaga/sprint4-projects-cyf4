@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { addDoc, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { getRefCollection } from "../firebase/config";
 import { TweetListContext } from "../contexts/TweetListContext";
@@ -45,6 +45,12 @@ const useTweets = () => {
       console.log(e);
     }
   };
+
+  useEffect(() => {
+    const getAsyncTweets = async () => await getTweets();
+
+    getAsyncTweets();
+  }, []);
 
   return { addTweet, deleteTweet, getTweets };
 };
