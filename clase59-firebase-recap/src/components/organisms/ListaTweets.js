@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
+import { TweetListContext } from "../../contexts/TweetListContext";
 import useTweets from "../../hooks/useTweets";
 import Tweet from "../molecules/Tweet/Tweet";
 
 const ListaTweets = () => {
-  const [listaTweets, setListaTweets] = useState([]);
+  const { listaTweets } = useContext(TweetListContext);
+
   const { getTweets } = useTweets();
 
   useEffect(() => {
-    getTweets(setListaTweets);
+    getTweets();
   }, []);
 
   return (
     <div>
-      {listaTweets &&
-        listaTweets.map((element) => (
-          <Tweet
-            key={element.id}
-            text={element.tweet}
-            author={element.author}
-          />
-        ))}
+      {listaTweets.length > 0
+        ? listaTweets.map((element) => (
+            <Tweet
+              key={element.id}
+              id={element.id}
+              text={element.tweet}
+              author={element.author}
+              date={element.date}
+            />
+          ))
+        : "No existen tweets"}
     </div>
   );
 };

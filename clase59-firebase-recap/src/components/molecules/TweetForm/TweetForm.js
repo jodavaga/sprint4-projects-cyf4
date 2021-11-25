@@ -4,7 +4,7 @@ import useTweets from "../../../hooks/useTweets";
 import "./styles.css";
 
 const TweetForm = ({ formState, setFormState, initialState }) => {
-  const { newTweet } = useTweets();
+  const { addTweet } = useTweets();
 
   const handleChange = (e) => {
     const formValueTemp = {
@@ -15,11 +15,11 @@ const TweetForm = ({ formState, setFormState, initialState }) => {
     setFormState(formValueTemp);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // enviar a firebase
-    newTweet(formState);
+    await addTweet(formState);
 
     // reset fields
     setFormState(initialState);

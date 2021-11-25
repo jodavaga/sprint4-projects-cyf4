@@ -1,39 +1,52 @@
-import { addDoc, getDocs } from "firebase/firestore";
+import { useContext } from "react";
+import { addDoc, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { getRefCollection } from "../firebase/config";
+import { TweetListContext } from "../contexts/TweetListContext";
 
 const useTweets = () => {
-  const getTweets = async (setListaTweets) => {
+  const { setListaTweets } = useContext(TweetListContext);
+
+  // get all tweets collection
+  const getTweets = async () => {
     const querySnapshot = await getDocs(getRefCollection("tweets"));
 
-    const tweets = querySnapshot.docs.map((doc) => {
-      console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
-
-      const objTemp = {
+    const tweetsArray = querySnapshot.docs.map((doc) => {
+      return {
         id: doc.id,
         ...doc.data(),
       };
-
-      return objTemp;
     });
 
-    setListaTweets([...tweets]);
+    console.log("🚀 ~  ~ tweetsArray", tweetsArray);
+    setListaTweets(tweetsArray);
   };
 
-  const newTweet = async (tweetObject) => {
+  // Add new tweet
+  const addTweet = async (tweetObject) => {
     try {
       const docRef = await addDoc(getRefCollection("tweets"), tweetObject);
       console.log("Document written with ID: ", docRef.id);
+      // get updated collection
+      await getTweets();
     } catch (e) {
       console.error("Error adding document: ", e);
     }
   };
 
-  const deleteTweet = () => {
-    // borrar tweets
-    console.warn("Borrando tweet...");
+  // Delete tweets
+  const deleteTweet = async (idDocument) => {
+    try {
+      console.warn("Borrando tweet...", idDocument);
+      const docRef = doc(getRefCollection("tweets"), idDocument);
+      await deleteDoc(docRef);
+      // get updated collection
+      await getTweets();
+    } catch (e) {
+      console.log(e);
+    }
   };
 
-  return { newTweet, deleteTweet, getTweets };
+  return { addTweet, deleteTweet, getTweets };
 };
 
 export default useTweets;
