@@ -22,12 +22,7 @@ const ListaTweets = () => {
     <div className="listWrapper">
       {listaTweets.length > 0
         ? listaTweets.map((element) => (
-            <Tweet
-              key={element.id}
-              id={element.id}
-              text={element.tweet}
-              author={element.author}
-            />
+            <Tweet key={element.id} tweetData={element} />
           ))
         : "No existen tweets"}
     </div>

@@ -26,6 +26,12 @@ const TweetForm = () => {
     // crear un documento en la coleccion de tweets
     console.log("🚀 ~ Data to firestore:", formState);
     addNewTweet(formState);
+
+    // reset
+    setFormState({
+      tweet: "",
+      author: "",
+    });
   };
 
   return (

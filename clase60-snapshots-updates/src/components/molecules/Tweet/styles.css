@@ -16,3 +16,12 @@ h2 {
 span {
   margin-right: 10px;
 }
+.tweetFooter {
+  display: flex;
+}
+
+.likesWrapper {
+  margin: 0 5px;
+  display: flex;
+  cursor: pointer;
+}
