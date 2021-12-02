@@ -1,20 +1,17 @@
 import logo from "./logo.svg";
+import useAuthentication from "./hooks/useAuthentication";
 import "./App.css";
 
 function App() {
+  const { loginSocial, user } = useAuthentication();
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Clase 61 - Workshop</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>Clase 62 - Firebase Authentication</p>
+        <button onClick={loginSocial}>Login</button>
+        {user && <h3>Hola, {user.displayName}</h3>}
       </header>
     </div>
   );
