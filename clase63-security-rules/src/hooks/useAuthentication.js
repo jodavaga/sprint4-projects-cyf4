@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signOut } from "firebase/auth";
 import { UserContext } from "../contexts/UserContext";
 import { auth, googleProvider } from "../firebase/config";
 
@@ -24,7 +24,17 @@ const useAuthentication = () => {
     }
   };
 
-  return { loginSocial };
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      // actualizamos contexto
+      setUser(null);
+    } catch (e) {
+      console.log("🚀 ~ file: useAuthentication.js ~ line 35 ~ logout ~ e", e);
+    }
+  };
+
+  return { loginSocial, logout };
 };
 
 export default useAuthentication;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // components
 import TweetForm from "./components/molecules/TweetForm/TweetForm";
@@ -6,24 +6,22 @@ import ListaTweets from "./components/organisms/ListaTweets";
 
 // styles
 import "./App.css";
-import useTweetCollection from "./hooks/useTweetCollection";
 import useAuthentication from "./hooks/useAuthentication";
+import LoginForm from "./components/molecules/LoginForm/LoginForm";
 
 const initialFormState = {
   tweet: "",
-  author: "",
 };
 
 function App() {
   const [formState, setFormState] = useState(initialFormState);
 
-  const { loginSocial } = useAuthentication();
+  const { logout } = useAuthentication();
 
   return (
     <div className="App">
       <h1>Clase 63 - Security Rules</h1>
-      <p>No podras tweetear sino te logeas primero</p>
-      <button onClick={loginSocial}>Login</button>
+      <LoginForm />
       <br />
       <hr />
       <TweetForm
@@ -33,6 +31,9 @@ function App() {
       />
       <hr />
       <ListaTweets />
+
+      <hr />
+      <button onClick={logout}>logout</button>
     </div>
   );
 }

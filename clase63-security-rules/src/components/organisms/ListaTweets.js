@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { TweetsContext } from "../../contexts/TweetsContext";
 import useTweetCollection from "../../hooks/useTweetCollection";
 import Tweet from "../molecules/Tweet/Tweet";

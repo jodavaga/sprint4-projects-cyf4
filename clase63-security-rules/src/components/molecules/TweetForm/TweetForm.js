@@ -4,11 +4,15 @@ import useTweetCollection from "../../../hooks/useTweetCollection";
 
 import "./styles.css";
 
+const initialState = {
+  tweet: "",
+  author: "",
+  uid: "",
+  email: "",
+};
+
 const TweetForm = () => {
-  const [formState, setFormState] = useState({
-    tweet: "",
-    author: "",
-  });
+  const [formState, setFormState] = useState(initialState);
 
   // custom hook
   const { addNewTweet } = useTweetCollection();
@@ -19,6 +23,8 @@ const TweetForm = () => {
       ...formState,
       [e.target.name]: e.target.value,
       author: user ? user.displayName : "Desconocido",
+      uid: user && user.uid,
+      email: user && user.email,
     });
   };
 
@@ -31,10 +37,7 @@ const TweetForm = () => {
     addNewTweet(formState);
 
     // reset
-    setFormState({
-      tweet: "",
-      author: "",
-    });
+    setFormState(initialState);
   };
 
   return (
@@ -49,13 +52,6 @@ const TweetForm = () => {
         />
 
         <div>
-          <input
-            placeholder="Author"
-            name="author"
-            autoComplete="off"
-            value={formState.author}
-            onChange={handleChange}
-          />
           <button type="submit">Enviar tweet</button>
         </div>
       </form>
